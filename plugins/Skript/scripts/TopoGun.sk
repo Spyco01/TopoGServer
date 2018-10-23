@@ -133,7 +133,7 @@ sub "TopParTeam":
 	if {options.topParTeam} is 5:
 		set {options.topParTeam} to 1
 
-command /topog :
+command /topog:
 	trigger:
 		give nether star named "&6TopoG" to player
 
