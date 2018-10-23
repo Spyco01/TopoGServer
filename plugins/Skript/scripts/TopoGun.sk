@@ -191,28 +191,28 @@ on right click with 373:8233:
 sub "BorderChange":
 	if {options.border.size} is 250:
 		set {options.border.size} to 230
-		set {_spawnblue} to location at (-480, 200 ,-480) in world "Taupe gun"
-		set {_spawnpurple} to location at (-480, 200 ,480) in world "Taupe gun"
-		set {_spawnyellow} to location at (480, 200 ,-480) in world "Taupe gun"
-		set {_spawnlime} to location at (480, 200 ,480) in world "Taupe gun"
+		set {_spawnblue} to location at (-480, 200, -480) in world "Taupe gun"
+		set {_spawnpurple} to location at (-480, 200, 480) in world "Taupe gun"
+		set {_spawnyellow} to location at (480, 200, -480) in world "Taupe gun"
+		set {_spawnlime} to location at (480, 200, 480) in world "Taupe gun"
 	if {options.border.size} is 500:
 		set {options.border.size} to 1000
-		set {_spawnblue} to location at (-980, 200 ,-980) in world "Taupe gun"
-		set {_spawnpurple} to location at (-980, 200 ,980) in world "Taupe gun"
-		set {_spawnyellow} to location at (980, 200 ,-980) in world "Taupe gun"
-		set {_spawnlime} to location at (980, 200 ,980) in world "Taupe gun"
+		set {_spawnblue} to location at (-980, 200, -980) in world "Taupe gun"
+		set {_spawnpurple} to location at (-980, 200, 980) in world "Taupe gun"
+		set {_spawnyellow} to location at (980, 200, -980) in world "Taupe gun"
+		set {_spawnlime} to location at (980, 200, 980) in world "Taupe gun"
 	if {options.border.size} is 1000:
 		set {options.border.size} to 2000
-		set {_spawnblue} to location at (-1980, 200 ,-1980 ) in world "Taupe gun"
-		set {_spawnpurple} to location at (-1980, 200 ,1980) in world "Taupe gun"
-		set {_spawnyellow} to location at (1980, 200 ,-1980) in world "Taupe gun"
-		set {_spawnlime} to location at (1980, 200 ,1980) in world "Taupe gun"
+		set {_spawnblue} to location at (-1980, 200, -1980 ) in world "Taupe gun"
+		set {_spawnpurple} to location at (-1980, 200, 1980) in world "Taupe gun"
+		set {_spawnyellow} to location at (1980, 200, -1980) in world "Taupe gun"
+		set {_spawnlime} to location at (1980, 200, 1980) in world "Taupe gun"
 	if {options.border.size} is 2000:
 		set {options.border.size} to 250
-		set {_spawnblue} to location at (-230, 200 ,-230) in world "Taupe gun"
-		set {_spawnpurple} to location at (-230, 200 ,230) in world "Taupe gun"
-		set {_spawnyellow} to location at (230, 200 ,-230) in world "Taupe gun"
-		set {_spawnlime} to location at (230, 200 ,230) in world "Taupe gun"
+		set {_spawnblue} to location at (-230, 200, -230) in world "Taupe gun"
+		set {_spawnpurple} to location at (-230, 200, 230) in world "Taupe gun"
+		set {_spawnyellow} to location at (230, 200, -230) in world "Taupe gun"
+		set {_spawnlime} to location at (230, 200, 230) in world "Taupe gun"
 
 sub "BorderReduce":
 	reduce {options.border.size.actual} by {options.border.size.reduction}
