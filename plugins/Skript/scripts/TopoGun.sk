@@ -191,28 +191,28 @@ on right click with 373:8233:
 sub "BorderChange":
 	if {options.border.size} is 250:
 		set {options.border.size} to 230
-		set {_spawn.blue} to location at -480, 200 ,-480 
-		set {_spawn.purple} to location at -480, 200 ,480
-		set {_spawn.yellow} to location at 480, 200 ,-480
-		set {_spawn.lime} to location at 480, 200 ,480
+		set {_spawnblue} to location at -480, 200 ,-480 
+		set {_spawnpurple} to location at -480, 200 ,480
+		set {_spawnyellow} to location at 480, 200 ,-480
+		set {_spawnlime} to location at 480, 200 ,480
 	if {options.border.size} is 500:
 		set {options.border.size} to 1000
-		set {_spawn.blue} to location at -980, 200 ,-980 
-		set {_spawn.purple} to location at -980, 200 ,980
-		set {_spawn.yellow} to location at 980, 200 ,-980
-		set {_spawn.lime} to location at 980, 200 ,980
+		set {_spawnblue} to location at -980, 200 ,-980 
+		set {_spawnpurple} to location at -980, 200 ,980
+		set {_spawnyellow} to location at 980, 200 ,-980
+		set {_spawnlime} to location at 980, 200 ,980
 	if {options.border.size} is 1000:
 		set {options.border.size} to 2000
-		set {_spawn.blue} to location at -1980, 200 ,-1980 
-		set {_spawn.purple} to location at -1980, 200 ,1980
-		set {_spawn.yellow} to location at 1980, 200 ,-1980
-		set {_spawn.lime} to location at 1980, 200 ,1980
+		set {_spawnblue} to location at -1980, 200 ,-1980 
+		set {_spawnpurple} to location at -1980, 200 ,1980
+		set {_spawnyellow} to location at 1980, 200 ,-1980
+		set {_spawnlime} to location at 1980, 200 ,1980
 	if {options.border.size} is 2000:
 		set {options.border.size} to 250
-		set {_spawn.blue} to location at -230, 200 ,-230 
-		set {_spawn.purple} to location at -230, 200 ,230
-		set {_spawn.yellow} to location at 230, 200 ,-230
-		set {_spawn.lime} to location at 230, 200 ,230
+		set {_spawnblue} to location at -230, 200 ,-230 
+		set {_spawnpurple} to location at -230, 200 ,230
+		set {_spawnyellow} to location at 230, 200 ,-230
+		set {_spawnlime} to location at 230, 200 ,230
 
 sub "BorderReduce":
 	reduce {options.border.size.actual} by {options.border.size.reduction}
@@ -233,20 +233,20 @@ sub "StartGame":
 		wait 5 ticks
 		make console execute command "/effect %loop-player% fire_resistance 30 50 true"
 		make console execute command "/effect %loop-player% resistance 30 50 true"
-		teleport loop-player to {spawn.blue}
+		teleport loop-player to {_spawnblue}
 	loop {team.purple::*}:
 		wait 5 ticks
 		make console execute command "/effect %loop-player% fire_resistance 30 50 true"
 		make console execute command "/effect %loop-player% resistance 30 50 true"
-		teleport loop-player to {spawn.purple}
+		teleport loop-player to {_spawnpurple}
 	loop {team.yellow::*}:
 		wait 5 ticks
 		make console execute command "/effect %loop-player% fire_resistance 30 50 true"
 		make console execute command "/effect %loop-player% resistance 30 50 true"
-		teleport loop-player to {spawn.yellow}
+		teleport loop-player to {_spawnyellow}
 	loop {team.lime::*}:
 		wait 5 ticks
 		make console execute command "/effect %loop-player% fire_resistance 30 50 true"
 		make console execute command "/effect %loop-player% resistance 30 50 true"
-		teleport loop-player to {spawn.lime}
+		teleport loop-player to {_spawnlime}
 	make console execute command "/worldborder set %{options.border.size}%"
