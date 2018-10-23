@@ -217,16 +217,6 @@ sub "BorderChange":
 sub "BorderReduce":
 	reduce {options.border.size.actual} by {options.border.size.reduction}
 	make console execute command "/worldborder set %{options.border.size.actual}%"
-	
-sub "TeamsNames":
-	loop {team.blue::*}:
-		Set the loop-value's display name to "&3%name of player%"
-	loop {team.purple::*}:
-		Set the loop-value's display name to "&5%name of player%"
-	loop {team.yellow::*}:
-		Set the loop-value's display name to "&e%name of player%"
-	loop {team.lime::*}:
-		Set the loop-value's display name to "&a%name of player%"
 
 sub "StartGame":
 	loop {team.blue::*}:
