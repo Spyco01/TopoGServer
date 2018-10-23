@@ -147,7 +147,8 @@ command /topoGMenu:
 		if player is op:
 			open chest with 1 rows named "&6TopoG" to player
 			wait 2 ticks
-			while 1:
+			set {menu} to true
+			while {menu} is true:
 				wait 1 second
 				format slot 0 of player with green wool named "&cEpisode Taupes Révélés" with lore "&aEpisode &6%{options.epTaupes}%" to close then run [Invoke "EpiTaupe"]
 				format slot 1 of player with cyan wool named "&cDurée Episode" with lore "&6%{options.epTemps}% &aminutes" to close then run [Invoke "EpiTime"]
