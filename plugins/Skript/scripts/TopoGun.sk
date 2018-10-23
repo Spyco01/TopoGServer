@@ -1,0 +1,251 @@
+options:
+	plugin : &a[&6TopoG&a]&f
+
+on load:
+	set {options.epTaupes} to 2
+	set {options.epTemps} to 20
+	set {options.topParTeam} to 1
+	make console execute command "/worldborder center 0 0"
+
+sub "blueTaupe":
+	while {taupe.blue} is false:
+		wait 10 ticks
+		loop {team.blue::*}:
+			if {taupe.blue} is false:
+				add a random integer between 1 and 10 to {chooseTaupe.Blue}
+				wait 5 ticks
+				if {chooseTaupe.Blue} is greater than 30:
+					set {taupe::%loop-player%} to true
+					add loop-player to {team.taupe::*}
+					set {taupe.blue} to true
+					wait 5 ticks
+
+sub "yellowTaupe":
+	while {taupe.yellow} is false:
+		wait 10 ticks
+		loop {team.yellow::*}:
+			if {taupe.yellow} is false:
+				add a random integer between 1 and 10 to {chooseTaupe.Yellow}
+				wait 5 ticks
+				if {chooseTaupe.Yellow} is greater than 30:
+					set {taupe::%loop-player%} to true
+					add loop-player to {team.taupe::*}
+					set {taupe.yellow} to true
+					wait 5 ticks
+
+sub "purpleTaupe":
+	while {taupe.purple} is false:
+		wait 10 ticks
+		loop {team.purple::*}:
+			if {taupe.purple} is false:
+				add a random integer between 1 and 10 to {chooseTaupe.Purple}
+				wait 5 ticks
+				if {chooseTaupe.Purple} is greater than 30:
+					set {taupe::%loop-player%} to true
+					add loop-player to {team.taupe::*}
+					set {taupe.purple} to true
+					wait 5 ticks
+
+sub "limeTaupe":
+	while {taupe.lime} is false:
+	wait 10 ticks
+	loop {team.lime::*}:
+		if {taupe.lime} is false:
+			add a random integer between 1 and 10 to {chooseTaupe.Lime}
+			wait 5 ticks
+			if {chooseTaupe.Lime} is greater than 30:
+				set {taupe::%loop-player%} to true
+				add loop-player to {team.taupe::*}
+				set {taupe.lime} to true
+				wait 5 ticks
+
+sub "RandomTaupes": # Elle est éxécuté par (invoke "Fonction")
+	wait 2 ticks
+	Invoke "blueTaupe"
+	wait 2 ticks
+	Invoke "yellowTaupe"
+	wait 2 ticks
+	Invoke "purpleTaupe"
+	wait 2 ticks
+	Invoke "limeTaupe"
+	wait 5 ticks
+	broadcast "{@plugin} &cLes Taupes ont étés choisis !"
+
+sub "NouvelEpisode":
+	broadcast "{@plugin} &cFin de l'épisode %{episode}% !"
+	add 1 to {episode}
+	broadcast "{@plugin} &cDébut de l'épisode %{episode}% !"
+
+command "/topogDebug":
+	trigger:
+		if player is op:
+			open chest with 1 rows named "&2TopoG &l&cDEBUG TOOL" to player
+			wait 2 ticks
+			format slot 0 of player with green wool named "&cEpisode Taupes Révélés" with lore "&aEpisode &6%{options.epTaupes}%" to run [Invoke "EpiTaupe"]
+			format slot 1 of player with cyan wool named "&cDurée Episode" with lore "&6%{options.epTemps}% &aminutes" to run [Invoke "EpiTime"]
+			format slot 2 of player with cyan wool named "&cTaupes par Equipe &6%{options.topParTeam}%" to run [Invoke "TopParTeam"]
+			format slot 3 of player with 373:8233 named "&cPotions Force II %{options.forbid.pot.strII.txt}%" to run [Invoke "ForbidStrII"]
+			format slot 4 of player with cyan wool named "&cTaupes par Equipe &6%{options.topParTeam}%" to run [Invoke "TopParTeam"]
+			format slot 8 of player with cyan wool named "&cInfos Partie" with lore "&aAffiche toutes les infos de la partie" to close then run [Invoke "DispInfos"]
+		else:
+			message "&cTu n'as pas accès à cette commande !"
+
+on chat:
+	cancel event
+	if player is in {team.blue}:
+		broadcast "&3%player% > %message%"
+	else if player is in {team.purple}:
+		broadcast "&5%player% > %message%"
+	else if player is in {team.yellow}:
+		broadcast "&e%player% > %message%"
+	else if player is in {team.lime}:
+		broadcast "&a%player% > %message%"
+	else:
+		broadcast "&7%player% > %message%"
+
+sub "EpiTaupe":
+	if {options.epTaupes} is 1:
+		set {options.epTaupes} to 2
+	if {options.epTaupes} is 2:
+		set {options.epTaupes} to 3
+	if {options.epTaupes} is 3:
+		set {options.epTaupes} to 4
+	if {options.epTaupes} is 4:
+		set {options.epTaupes} to 1
+
+sub "EpiTime":
+	if {options.epTemps} is 10:
+		set {options.epTemps} to 20
+	if {options.epTemps} is 20:
+		set {options.epTemps} to 30
+	if {options.epTemps} is 30:
+		set {options.epTemps} to 10
+
+sub "TopParTeam":
+	if {options.topParTeam} is 1:
+		set {options.topParTeam} to 2
+	if {options.topParTeam} is 2:
+		set {options.topParTeam} to 3
+	if {options.topParTeam} is 3:
+		set {options.topParTeam} to 4
+	if {options.topParTeam} is 4:
+		set {options.topParTeam} to 5
+	if {options.topParTeam} is 5:
+		set {options.topParTeam} to 1
+
+command /topog :
+	trigger:
+		give nether star named "&6TopoG" to player
+
+on right click with nether star:
+	if player is holding a nether star named "&6TopoG":
+		if player is op:
+			open chest with 1 rows named "&6TopoG" to player
+			wait 2 ticks
+			format slot 0 of player with green wool named "&cEpisode Taupes Révélés" with lore "&aEpisode &6%{options.epTaupes}%" to run [Invoke "EpiTaupe"]
+			format slot 1 of player with cyan wool named "&cDurée Episode" with lore "&6%{options.epTemps}% &aminutes" to run [Invoke "EpiTime"]
+			format slot 2 of player with cyan wool named "&cTaupes par Equipe &6%{options.topParTeam}%" to run [Invoke "TopParTeam"]
+			format slot 3 of player with 373:8233 named "&cPotions Force II %{options.forbid.pot.strII.txt}%" to run [Invoke "ForbidStrII"]
+			format slot 4 of player with cyan wool named "&cTaupes par Equipe &6%{options.topParTeam}%" to run [Invoke "TopParTeam"]
+			format slot 8 of player with cyan wool named "&cInfos Partie" with lore "&aAffiche toutes les infos de la partie" to close then run [Invoke "DispInfos"]
+
+sub "DispInfos":
+	broadcast " "
+	broadcast "&3[--{@plugin}&3--]"
+	broadcast "&2Taupes choisis : Episode &6%{options.epTaupes}%"
+	broadcast "&2Episode de &6%{options.epTemps}% &2minutes"
+	if {options.topParTeam} is 1:
+		broadcast "&6%{options.topParTeam}% &2Taupe par Equipe"
+	else:
+		broadcast "&6%{options.topParTeam}% &2Taupes par Equipe"
+	if {options.border.size} is 250:
+		broadcast "&2Bordure de départ : &6500x500"
+	else if {options.border.size} is 500:
+		broadcast "&2Bordure de départ : &61000x1000"
+	else if {options.border.size} is 1000:
+		broadcast "&2Bordure de départ : &62000x2000"
+	else if {options.border.size} is 2000:
+		broadcast "&2Bordure de départ : &64000x4000"
+	broadcast " "
+
+
+on block break:
+	if {game.started} is false:
+		cancel event
+
+on craft strengh potion tier II:
+
+sub "ForbidStrII":
+	if {options.forbid.pot.strII} is false:
+		set {options.forbid.pot.strII} to true
+		set {options.forbid.pot.strII.txt} to "&cInterdites"
+	else:
+		set {options.forbid.pot.strII} to false
+		set {options.forbid.pot.strII.txt} to "&aAutorisés"
+
+on right click with 373:8233:
+	if {options.forbid.pot.strII} is true:
+		cancel event
+
+sub "BorderChange":
+	if {options.border.size} is 250:
+		set {options.border.size} to 230
+		set {spawn.blue} to location at -480, 200 ,-480 
+		set {spawn.purple} to location at -480, 200 ,480
+		set {spawn.yellow} to location at 480, 200 ,-480
+		set {spawn.lime} to location at 480, 200 ,480
+	if {options.border.size} is 500:
+		set {options.border.size} to 1000
+		set {spawn.blue} to location at -980, 200 ,-980 
+		set {spawn.purple} to location at -980, 200 ,980
+		set {spawn.yellow} to location at 980, 200 ,-980
+		set {spawn.lime} to location at 980, 200 ,980
+	if {options.border.size} is 1000:
+		set {options.border.size} to 2000
+		set {spawn.blue} to location at -1980, 200 ,-1980 
+		set {spawn.purple} to location at -1980, 200 ,1980
+		set {spawn.yellow} to location at 1980, 200 ,-1980
+		set {spawn.lime} to location at 1980, 200 ,1980
+	if {options.border.size} is 2000:
+		set {options.border.size} to 250
+		set {spawn.blue} to location at -230, 200 ,-230 
+		set {spawn.purple} to location at -230, 200 ,230
+		set {spawn.yellow} to location at 230, 200 ,-230
+		set {spawn.lime} to location at 230, 200 ,230
+
+sub "BorderReduce":
+	reduce {options.border.size.actual} by {options.border.size.reduction}
+	make console execute command "/worldborder set %{options.border.size.actual}%"
+	
+sub "TeamsNames":
+	loop {team.blue}:
+		Set the loop-player's display name to "&3%name of player%"
+	loop {team.purple}:
+		Set the loop-player's display name to "&5%name of player%"
+	loop {team.yellow}:
+		Set the loop-player's display name to "&e%name of player%"
+	loop {team.lime}:
+		Set the loop-player's display name to "&a%name of player%"
+
+sub "StartGame":
+	loop {team.blue::*}:
+		wait 5 ticks
+		make console execute command "/effect %loop-player% fire_resistance 30 50 true"
+		make console execute command "/effect %loop-player% resistance 30 50 true"
+		teleport loop-player to {spawn.blue}
+	loop {team.purple::*}:
+		wait 5 ticks
+		make console execute command "/effect %loop-player% fire_resistance 30 50 true"
+		make console execute command "/effect %loop-player% resistance 30 50 true"
+		teleport loop-player to {spawn.purple}
+	loop {team.yellow::*}:
+		wait 5 ticks
+		make console execute command "/effect %loop-player% fire_resistance 30 50 true"
+		make console execute command "/effect %loop-player% resistance 30 50 true"
+		teleport loop-player to {spawn.yellow}
+	loop {team.lime::*}:
+		wait 5 ticks
+		make console execute command "/effect %loop-player% fire_resistance 30 50 true"
+		make console execute command "/effect %loop-player% resistance 30 50 true"
+		teleport loop-player to {spawn.lime}
+	make console execute command "/worldborder set %{options.border.size}%"
