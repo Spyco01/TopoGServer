@@ -173,9 +173,6 @@ on block break:
 	if {game.started} is false:
 		cancel event
 
-on craft strengh potion tier II:
-	cancel event
-
 sub "ForbidStrII":
 	if {options.forbid.pot.strII} is false:
 		set {options.forbid.pot.strII} to true
@@ -184,8 +181,9 @@ sub "ForbidStrII":
 		set {options.forbid.pot.strII} to false
 		set {options.forbid.pot.strII.txt} to "&aAutorisés"
 
-on right click with 373:8233:
+on right click with potion of:8233:
 	if {options.forbid.pot.strII} is true:
+		remove potion of:8233 from player's inventory
 		cancel event
 
 sub "BorderChange":
