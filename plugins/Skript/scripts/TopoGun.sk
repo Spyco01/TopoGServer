@@ -15,8 +15,8 @@ sub "blueTaupe":
 				add a random integer between 1 and 10 to {chooseTaupe.Blue}
 				wait 5 ticks
 				if {chooseTaupe.Blue} is greater than 30:
-					set {taupe::%loop-player%} to true
-					add loop-player to {team.taupe::*}
+					set {taupe::%loop-value%} to true
+					add loop-value to {team.taupe::*}
 					set {taupe.blue} to true
 					wait 5 ticks
 
@@ -48,16 +48,16 @@ sub "purpleTaupe":
 
 sub "limeTaupe":
 	while {taupe.lime} is false:
-	wait 10 ticks
-	loop {team.lime::*}:
-		if {taupe.lime} is false:
-			add a random integer between 1 and 10 to {chooseTaupe.Lime}
-			wait 5 ticks
-			if {chooseTaupe.Lime} is greater than 30:
-				set {taupe::%loop-player%} to true
-				add loop-player to {team.taupe::*}
-				set {taupe.lime} to true
+		wait 10 ticks
+		loop {team.lime::*}:
+			if {taupe.lime} is false:
+				add a random integer between 1 and 10 to {chooseTaupe.Lime}
 				wait 5 ticks
+				if {chooseTaupe.Lime} is greater than 30:
+					set {taupe::%loop-player%} to true
+					add loop-player to {team.taupe::*}
+					set {taupe.lime} to true
+					wait 5 ticks
 
 sub "RandomTaupes": # Elle est éxécuté par (invoke "Fonction")
 	wait 2 ticks
@@ -174,6 +174,7 @@ on block break:
 		cancel event
 
 on craft strengh potion tier II:
+	cancel event
 
 sub "ForbidStrII":
 	if {options.forbid.pot.strII} is false:
