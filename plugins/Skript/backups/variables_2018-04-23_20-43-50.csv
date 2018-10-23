@@ -1,0 +1,127 @@
+# === Skript's variable storage ===
+# Please do not modify this file manually!
+#
+# version: 2.1.2
+
+claim.<none>, long, 0000000000000000
+claim.dil8, long, 0000000000000000
+claim.erisium_rodymon, long, 0000000000000000
+claim.mario45510, long, 0000000000000000
+claim.spyco01, long, 0000000000000001
+cyan.<none>, long, 0000000000000000
+cyan.dil8, long, 0000000000000001
+cyan.erisium_rodymon, long, 0000000000000001
+cyan.mario45510, long, 0000000000000001
+cyan.spyco01, long, 0000000000000000
+jailed.dil8, long, 0000000000000000
+jailed.spyco01, long, 0000000000000000
+lime.<none>, long, 0000000000000000
+lime.dil8, long, 0000000000000000
+lime.erisium_rodymon, long, 0000000000000000
+lime.mario45510, long, 0000000000000000
+lime.spyco01, long, 0000000000000000
+purple.<none>, long, 0000000000000000
+purple.dil8, long, 0000000000000000
+purple.erisium_rodymon, long, 0000000000000000
+purple.mario45510, long, 0000000000000000
+purple.spyco01, long, 0000000000000000
+reveal.<none>, long, 0000000000000000
+reveal.dil8, long, 0000000000000000
+reveal.erisium_rodymon, long, 0000000000000000
+reveal.mario45510, long, 0000000000000000
+reveal.spyco01, long, 0000000000000001
+setmaxplayer, long, 0000000000000001
+taupe.<none>, long, 0000000000000000
+taupe.dil8, long, 0000000000000000
+taupe.erisium_rodymon, long, 0000000000000000
+taupe.mario45510, long, 0000000000000000
+taupe.spyco01, long, 0000000000000001
+team.blue::1, offlineplayer, 81046E616D6520800444696C38
+team.blue::2, offlineplayer, 81046E616D6520800F4572697369756D5F526F64796D6F6E
+yellow.<none>, long, 0000000000000000
+yellow.dil8, long, 0000000000000000
+yellow.erisium_rodymon, long, 0000000000000000
+yellow.mario45510, long, 0000000000000000
+yellow.spyco01, long, 0000000000000000
+
+lime.dil8, long, 0000000000000000
+yellow.dil8, long, 0000000000000000
+cyan.dil8, long, 0000000000000000
+purple.dil8, long, 0000000000000000
+taupe.dil8, long, 0000000000000000
+reveal.dil8, long, 0000000000000000
+claim.dil8, long, 0000000000000000
+team.blue::1, null, 
+lime.dil8, long, 0000000000000000
+yellow.dil8, long, 0000000000000000
+cyan.dil8, long, 0000000000000001
+purple.dil8, long, 0000000000000000
+team.blue::1, offlineplayer, 81046E616D6520800444696C38
+claim.dil8, long, 0000000000000001
+taupe.dil8, long, 0000000000000001
+lime.dil8, long, 0000000000000000
+yellow.dil8, long, 0000000000000000
+cyan.dil8, long, 0000000000000000
+purple.dil8, long, 0000000000000000
+reveal.dil8, long, 0000000000000001
+lime.dil8, long, 0000000000000000
+yellow.dil8, long, 0000000000000000
+cyan.dil8, long, 0000000000000000
+purple.dil8, long, 0000000000000000
+taupe.dil8, long, 0000000000000000
+reveal.dil8, long, 0000000000000000
+claim.dil8, long, 0000000000000000
+team.blue::1, null, 
+team.blue::2, null, 
+lime.dil8, long, 0000000000000000
+yellow.dil8, long, 0000000000000000
+cyan.dil8, long, 0000000000000001
+purple.dil8, long, 0000000000000000
+team.blue::1, offlineplayer, 81046E616D6520800444696C38
+taupe.dil8, long, 0000000000000001
+lime.dil8, long, 0000000000000000
+yellow.dil8, long, 0000000000000000
+cyan.dil8, long, 0000000000000000
+purple.dil8, long, 0000000000000000
+reveal.dil8, long, 0000000000000001
+lime.dil8, long, 0000000000000000
+yellow.dil8, long, 0000000000000000
+cyan.dil8, long, 0000000000000000
+purple.dil8, long, 0000000000000000
+taupe.dil8, long, 0000000000000000
+reveal.dil8, long, 0000000000000000
+claim.dil8, long, 0000000000000000
+team.blue::1, null, 
+lime.dil8, long, 0000000000000000
+yellow.dil8, long, 0000000000000000
+cyan.dil8, long, 0000000000000001
+purple.dil8, long, 0000000000000000
+team.blue::1, offlineplayer, 81046E616D6520800444696C38
+taupe.dil8, long, 0000000000000001
+lime.dil8, long, 0000000000000000
+yellow.dil8, long, 0000000000000000
+cyan.dil8, long, 0000000000000000
+purple.dil8, long, 0000000000000000
+reveal.dil8, long, 0000000000000001
+claim.dil8, long, 0000000000000001
+lime.dil8, long, 0000000000000000
+yellow.dil8, long, 0000000000000000
+cyan.dil8, long, 0000000000000000
+purple.dil8, long, 0000000000000000
+taupe.dil8, long, 0000000000000000
+reveal.dil8, long, 0000000000000000
+claim.dil8, long, 0000000000000000
+team.blue::1, null, 
+lime.dil8, long, 0000000000000000
+yellow.dil8, long, 0000000000000000
+cyan.dil8, long, 0000000000000001
+purple.dil8, long, 0000000000000000
+team.blue::1, offlineplayer, 81046E616D6520800444696C38
+lime.dil8, long, 0000000000000000
+yellow.dil8, long, 0000000000000000
+cyan.dil8, long, 0000000000000000
+purple.dil8, long, 0000000000000000
+taupe.dil8, long, 0000000000000000
+reveal.dil8, long, 0000000000000000
+claim.dil8, long, 0000000000000000
+team.blue::1, null, 

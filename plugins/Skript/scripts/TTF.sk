@@ -1,0 +1,23 @@
+command /color:
+	trigger:
+		send "&44&cc&66&ee&22&aa&bb&33&11&99&dd&55&ff&77&88&00&f&ll&nn&oo&kk&mm&rr"
+
+command /start:
+	trigger:
+		broadcast "&7[&6TTF&7] &fLa partie commence dans 5 secondes"
+		play "NOTE_PLING" to all players at volume 10
+		wait 1 seconds
+		broadcast "&7[&6TTF&7] &fLa partie commence dans 4 secondes"
+		play "NOTE_PLING" to all players at volume 10
+		wait 1 seconds
+		broadcast "&7[&6TTF&7] &fLa partie commence dans 3 secondes"
+		play "NOTE_PLING" to all players at volume 10
+		wait 1 seconds
+		broadcast "&7[&6TTF&7] &fLa partie commence dans 2 secondes"
+		play "NOTE_PLING" to all players at volume 10
+		wait 1 seconds
+		broadcast "&7[&6TTF&7] &fLa partie commence dans 1 secondes"
+		play "NOTE_PLING" to all players at volume 10
+		wait 1 seconds
+		broadcast "&7[&6TTF&7] &fLa partie commence !"
+		play "LEVEL_UP" to all players at volume 10 
