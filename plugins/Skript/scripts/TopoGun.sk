@@ -219,34 +219,34 @@ sub "BorderReduce":
 	make console execute command "/worldborder set %{options.border.size.actual}%"
 	
 sub "TeamsNames":
-	loop {team.blue}:
+	loop {team.blue::*}:
 		Set the loop-player's display name to "&3%name of player%"
-	loop {team.purple}:
+	loop {team.purple::*}:
 		Set the loop-player's display name to "&5%name of player%"
-	loop {team.yellow}:
+	loop {team.yellow::*}:
 		Set the loop-player's display name to "&e%name of player%"
-	loop {team.lime}:
+	loop {team.lime::*}:
 		Set the loop-player's display name to "&a%name of player%"
 
 sub "StartGame":
 	loop {team.blue::*}:
 		wait 5 ticks
-		make console execute command "/effect %loop-player% fire_resistance 30 50 true"
-		make console execute command "/effect %loop-player% resistance 30 50 true"
-		teleport loop-player to {_spawnblue}
+		make console execute command "/effect %loop-value% fire_resistance 30 50 true"
+		make console execute command "/effect %loop-value% resistance 30 50 true"
+		teleport loop-value to {_spawnblue}
 	loop {team.purple::*}:
 		wait 5 ticks
-		make console execute command "/effect %loop-player% fire_resistance 30 50 true"
-		make console execute command "/effect %loop-player% resistance 30 50 true"
-		teleport loop-player to {_spawnpurple}
+		make console execute command "/effect %loop-value% fire_resistance 30 50 true"
+		make console execute command "/effect %loop-value% resistance 30 50 true"
+		teleport loop-value to {_spawnpurple}
 	loop {team.yellow::*}:
 		wait 5 ticks
-		make console execute command "/effect %loop-player% fire_resistance 30 50 true"
-		make console execute command "/effect %loop-player% resistance 30 50 true"
-		teleport loop-player to {_spawnyellow}
+		make console execute command "/effect %loop-value% fire_resistance 30 50 true"
+		make console execute command "/effect %loop-value% resistance 30 50 true"
+		teleport loop-value to {_spawnyellow}
 	loop {team.lime::*}:
 		wait 5 ticks
-		make console execute command "/effect %loop-player% fire_resistance 30 50 true"
-		make console execute command "/effect %loop-player% resistance 30 50 true"
-		teleport loop-player to {_spawnlime}
+		make console execute command "/effect %loop-value% fire_resistance 30 50 true"
+		make console execute command "/effect %loop-value% resistance 30 50 true"
+		teleport loop-value to {_spawnlime}
 	make console execute command "/worldborder set %{options.border.size}%"
