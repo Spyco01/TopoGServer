@@ -84,7 +84,7 @@ command "/topogDebug":
 			format slot 0 of player with green wool named "&cEpisode Taupes Révélés" with lore "&aEpisode &6%{options.epTaupes}%" to run [Invoke "EpiTaupe"]
 			format slot 1 of player with cyan wool named "&cDurée Episode" with lore "&6%{options.epTemps}% &aminutes" to run [Invoke "EpiTime"]
 			format slot 2 of player with cyan wool named "&cTaupes par Equipe &6%{options.topParTeam}%" to run [Invoke "TopParTeam"]
-			format slot 3 of player with 373:8233 named "&cPotions Force II %{options.forbid.pot.strII.txt}%" to run [Invoke "ForbidStrII"]
+			format slot 3 of player with potion of:8233 named "&cPotions Force II %{options.forbid.pot.strII.txt}%" to run [Invoke "ForbidStrII"]
 			format slot 4 of player with cyan wool named "&cTaupes par Equipe &6%{options.topParTeam}%" to run [Invoke "TopParTeam"]
 			format slot 8 of player with cyan wool named "&cInfos Partie" with lore "&aAffiche toutes les infos de la partie" to close then run [Invoke "DispInfos"]
 		else:
