@@ -28,8 +28,8 @@ sub "yellowTaupe":
 				add a random integer between 1 and 10 to {chooseTaupe.Yellow}
 				wait 5 ticks
 				if {chooseTaupe.Yellow} is greater than 30:
-					set {taupe::%loop-player%} to true
-					add loop-player to {team.taupe::*}
+					set {taupe::%loop-value%} to true
+					add loop-value to {team.taupe::*}
 					set {taupe.yellow} to true
 					wait 5 ticks
 
@@ -41,8 +41,8 @@ sub "purpleTaupe":
 				add a random integer between 1 and 10 to {chooseTaupe.Purple}
 				wait 5 ticks
 				if {chooseTaupe.Purple} is greater than 30:
-					set {taupe::%loop-player%} to true
-					add loop-player to {team.taupe::*}
+					set {taupe::%loop-value%} to true
+					add loop-value to {team.taupe::*}
 					set {taupe.purple} to true
 					wait 5 ticks
 
@@ -54,8 +54,8 @@ sub "limeTaupe":
 				add a random integer between 1 and 10 to {chooseTaupe.Lime}
 				wait 5 ticks
 				if {chooseTaupe.Lime} is greater than 30:
-					set {taupe::%loop-player%} to true
-					add loop-player to {team.taupe::*}
+					set {taupe::%loop-value%} to true
+					add loop-value to {team.taupe::*}
 					set {taupe.lime} to true
 					wait 5 ticks
 
