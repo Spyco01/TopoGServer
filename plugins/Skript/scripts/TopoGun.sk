@@ -103,6 +103,54 @@ on chat:
 	else:
 		broadcast "&7%player% > %message%"
 
+command /topog:
+	trigger:
+		give nether star named "&6TopoG" to player
+
+on right click with nether star:
+	if player is holding a nether star named "&6TopoG":
+		make player execute command "/topoGMenu"
+
+
+command /topoGMenu:
+	trigger:
+		if player is op:
+			open chest with 1 rows named "&6TopoG" to player
+			wait 2 ticks
+			format slot 0 of player with green wool named "&cEpisode Taupes Révélés" with lore "&aEpisode &6%{options.epTaupes}%" to run [Invoke "EpiTaupe"]
+			format slot 1 of player with cyan wool named "&cDurée Episode" with lore "&6%{options.epTemps}% &aminutes" to run [Invoke "EpiTime"]
+			format slot 2 of player with cyan wool named "&cTaupes par Equipe &6%{options.topParTeam}%" to run [Invoke "TopParTeam"]
+			format slot 3 of player with 373:8233 named "&cPotions Force II %{options.forbid.pot.strII.txt}%" to run [Invoke "ForbidStrII"]
+			format slot 4 of player with cyan wool named "&cTaupes par Equipe &6%{options.topParTeam}%" to run [Invoke "TopParTeam"]
+			format slot 8 of player with cyan wool named "&cInfos Partie" with lore "&aAffiche toutes les infos de la partie" to close then run [Invoke "DispInfos"]
+
+#FONCTIONS
+
+sub "StartGame":
+	loop {team.blue::*}:
+		wait 5 ticks
+		make console execute command "/effect %loop-value% fire_resistance 30 50 true"
+		make console execute command "/effect %loop-value% resistance 30 50 true"
+		teleport loop-value to {_spawnblue}
+	loop {team.purple::*}:
+		wait 5 ticks
+		make console execute command "/effect %loop-value% fire_resistance 30 50 true"
+		make console execute command "/effect %loop-value% resistance 30 50 true"
+		teleport loop-value to {_spawnpurple}
+	loop {team.yellow::*}:
+		wait 5 ticks
+		make console execute command "/effect %loop-value% fire_resistance 30 50 true"
+		make console execute command "/effect %loop-value% resistance 30 50 true"
+		teleport loop-value to {_spawnyellow}
+	loop {team.lime::*}:
+		wait 5 ticks
+		make console execute command "/effect %loop-value% fire_resistance 30 50 true"
+		make console execute command "/effect %loop-value% resistance 30 50 true"
+		teleport loop-value to {_spawnlime}
+	make console execute command "/worldborder set %{options.border.size}%"
+
+#OPTIONS MODIFIABLES
+
 sub "EpiTaupe":
 	if {options.epTaupes} is 1:
 		set {options.epTaupes} to 2
@@ -133,30 +181,6 @@ sub "TopParTeam":
 	if {options.topParTeam} is 5:
 		set {options.topParTeam} to 1
 
-command /topog:
-	trigger:
-		give nether star named "&6TopoG" to player
-
-on right click with nether star:
-	if player is holding a nether star named "&6TopoG":
-		make player execute command "/topoGMenu"
-
-
-command /topoGMenu:
-	trigger:
-		if player is op:
-			open chest with 1 rows named "&6TopoG" to player
-			wait 2 ticks
-			set {menu} to true
-			while {menu} is true:
-				format slot 0 of player with green wool named "&cEpisode Taupes Révélés" with lore "&aEpisode &6%{options.epTaupes}%" to run [Invoke "EpiTaupe"]
-				format slot 1 of player with cyan wool named "&cDurée Episode" with lore "&6%{options.epTemps}% &aminutes" to run [Invoke "EpiTime"]
-				format slot 2 of player with cyan wool named "&cTaupes par Equipe &6%{options.topParTeam}%" to run [Invoke "TopParTeam"]
-				format slot 3 of player with 373:8233 named "&cPotions Force II %{options.forbid.pot.strII.txt}%" to run [Invoke "ForbidStrII"]
-				format slot 4 of player with cyan wool named "&cTaupes par Equipe &6%{options.topParTeam}%" to run [Invoke "TopParTeam"]
-				format slot 8 of player with cyan wool named "&cInfos Partie" with lore "&aAffiche toutes les infos de la partie" to close then run [Invoke "DispInfos"]
-				wait 2 seconds
-
 sub "DispInfos":
 	broadcast " "
 	broadcast "&3[--{@plugin}&3--]"
@@ -175,11 +199,6 @@ sub "DispInfos":
 	else if {options.border.size} is 2000:
 		broadcast "&2Bordure de départ : &64000x4000"
 	broadcast " "
-
-
-on block break:
-	if {game.started} is false:
-		cancel event
 
 sub "ForbidStrII":
 	if {options.forbid.pot.strII} is false:
@@ -224,25 +243,3 @@ sub "BorderReduce":
 	reduce {options.border.size.actual} by {options.border.size.reduction}
 	make console execute command "/worldborder set %{options.border.size.actual}%"
 
-sub "StartGame":
-	loop {team.blue::*}:
-		wait 5 ticks
-		make console execute command "/effect %loop-value% fire_resistance 30 50 true"
-		make console execute command "/effect %loop-value% resistance 30 50 true"
-		teleport loop-value to {_spawnblue}
-	loop {team.purple::*}:
-		wait 5 ticks
-		make console execute command "/effect %loop-value% fire_resistance 30 50 true"
-		make console execute command "/effect %loop-value% resistance 30 50 true"
-		teleport loop-value to {_spawnpurple}
-	loop {team.yellow::*}:
-		wait 5 ticks
-		make console execute command "/effect %loop-value% fire_resistance 30 50 true"
-		make console execute command "/effect %loop-value% resistance 30 50 true"
-		teleport loop-value to {_spawnyellow}
-	loop {team.lime::*}:
-		wait 5 ticks
-		make console execute command "/effect %loop-value% fire_resistance 30 50 true"
-		make console execute command "/effect %loop-value% resistance 30 50 true"
-		teleport loop-value to {_spawnlime}
-	make console execute command "/worldborder set %{options.border.size}%"
