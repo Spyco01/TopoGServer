@@ -92,13 +92,13 @@ command /topogdebug:
 
 on chat:
 	cancel event
-	if player is in {team.blue}:
+	if player is in {team.blue::*}:
 		broadcast "&3%player% > %message%"
-	else if player is in {team.purple}:
+	else if player is in {team.purple::*}:
 		broadcast "&5%player% > %message%"
-	else if player is in {team.yellow}:
+	else if player is in {team.yellow::*}:
 		broadcast "&e%player% > %message%"
-	else if player is in {team.lime}:
+	else if player is in {team.lime::*}:
 		broadcast "&a%player% > %message%"
 	else:
 		broadcast "&7%player% > %message%"
@@ -139,6 +139,12 @@ on right click with potion of:8233:
 	if {options.forbid.pot.strII} is true:
 		remove potion of:8233 from player's inventory
 		cancel event
+
+on right click with potion of:16425:
+	if {options.forbid.pot.strII} is true:
+		remove potion of:16425 from player's inventory
+		cancel event
+		
 
 #FONCTIONS
 
@@ -272,5 +278,3 @@ command /topogcontrol <text>:
 				set {_spawnyellow} to location at (480, 200, -480) in world "Taupe gun"
 				set {_spawnlime} to location at (480, 200, 480) in world "Taupe gun"
 				set {options.border.size.text} to "500x500"
-
-
