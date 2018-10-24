@@ -76,7 +76,7 @@ sub "NouvelEpisode":
 	add 1 to {episode}
 	broadcast "{@plugin} &cDébut de l'épisode %{episode}% !"
 
-command "/topogdebug":
+command /topogdebug:
 	trigger:
 		if player is op:
 			open chest with 1 rows named "&2TopoG &l&cDEBUG TOOL" to player
