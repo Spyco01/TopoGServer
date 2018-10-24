@@ -170,7 +170,7 @@ command "/topogControl <text>":
 			else:
 				set {options.epTaupes} to 1
 
-		if arg is "EpiTime":
+		else if arg is "EpiTime":
 			if {options.epTemps} is 10:
 				set {options.epTemps} to 20
 			else if {options.epTemps} is 20:
@@ -180,7 +180,7 @@ command "/topogControl <text>":
 			else:
 				set {options.epTemps} to 20
 
-		if arg is "TopParTeam":
+		else if arg is "TopParTeam":
 			if {options.topParTeam} is 1:
 				set {options.topParTeam} to 2
 			else if {options.topParTeam} is 2:
@@ -194,7 +194,7 @@ command "/topogControl <text>":
 			else:
 				set {options.topParTeam} to 1
 
-		if arg is "DispInfos":
+		else if arg is "DispInfos":
 			broadcast " "
 			broadcast "&3[--{@plugin}&3--]"
 			broadcast "&2Taupes choisis : Episode &6%{options.epTaupes}%"
@@ -213,7 +213,7 @@ command "/topogControl <text>":
 				broadcast "&2Bordure de départ : &64000x4000"
 			broadcast " "
 
-		if arg is "ForbidStrII":
+		else if arg is "ForbidStrII":
 			if {options.forbid.pot.strII} is false:
 				set {options.forbid.pot.strII} to true
 				set {options.forbid.pot.strII.txt} to "&cInterdites"
@@ -221,7 +221,7 @@ command "/topogControl <text>":
 				set {options.forbid.pot.strII} to false
 				set {options.forbid.pot.strII.txt} to "&aAutorisés"	
 
-		if arg is "BorderChange":
+		else if arg is "BorderChange":
 			if {options.border.size} is 250:
 				set {options.border.size} to 230
 				set {_spawnblue} to location at (-480, 200, -480) in world "Taupe gun"
@@ -247,7 +247,7 @@ command "/topogControl <text>":
 				set {_spawnyellow} to location at (230, 200, -230) in world "Taupe gun"
 				set {_spawnlime} to location at (230, 200, 230) in world "Taupe gun"
 			else:
-n				set {options.border.size} to 230
+				set {options.border.size} to 230
 				set {_spawnblue} to location at (-480, 200, -480) in world "Taupe gun"
 				set {_spawnpurple} to location at (-480, 200, 480) in world "Taupe gun"
 				set {_spawnyellow} to location at (480, 200, -480) in world "Taupe gun"
