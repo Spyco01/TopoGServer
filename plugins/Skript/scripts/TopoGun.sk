@@ -113,13 +113,18 @@ on right click with nether star:
 			open chest with 1 rows named "&6TopoG" to player
 			wait 2 ticks
 			loop 120 times:
-				format slot 0 of player with green wool named "&cEpisode Taupes Révélés" with lore "&aEpisode &6%{options.epTaupes}%" to run "Invoke ""EpiTaupe"""
-				format slot 1 of player with cyan wool named "&cDurée Episode" with lore "&6%{options.epTemps}% &aminutes" to run "Invoke ""EpiTime"""
-				format slot 2 of player with cyan wool named "&cTaupes par Equipe &6%{options.topParTeam}%" to run "Invoke ""TopParTeam"""
-				format slot 3 of player with 373:8233 named "&cPotions Force II %{options.forbid.pot.strII.txt}%" to run "Invoke ""ForbidStrII"""
-				format slot 4 of player with cyan wool named "&cTaupes par Equipe &6%{options.topParTeam}%" to run "Invoke ""TopParTeam"""
-				format slot 8 of player with cyan wool named "&cInfos Partie" with lore "&aAffiche toutes les infos de la partie" to close then run "Invoke ""DispInfos"""
+				format slot 0 of player with green wool named "&cEpisode Taupes Révélés" with lore "&aEpisode &6%{options.epTaupes}%" to run "make console execute command ""/topogControl EpiTaupe"""
+				format slot 1 of player with cyan wool named "&cDurée Episode" with lore "&6%{options.epTemps}% &aminutes" to run "make console execute command ""/topogControl EpiTime"""
+				format slot 2 of player with cyan wool named "&cTaupes par Equipe &6%{options.topParTeam}%" to run "make console execute command ""/topogControl TopParTeam"""
+				format slot 3 of player with 373:8233 named "&cPotions Force II %{options.forbid.pot.strII.txt}%" to run "make console execute command ""/topogControl ForbidStrII"""
+				format slot 4 of player with cyan wool named "&cTaupes par Equipe &6%{options.topParTeam}%" to run "make console execute command ""/topogControl TopParTeam"""
+				format slot 8 of player with cyan wool named "&cInfos Partie" with lore "&aAffiche toutes les infos de la partie" to close then run "make console execute command ""/topogControl DispInfos"""
 				wait 1 second
+
+on right click with potion of:8233:
+	if {options.forbid.pot.strII} is true:
+		remove potion of:8233 from player's inventory
+		cancel event
 
 #FONCTIONS
 
@@ -146,97 +151,106 @@ sub "StartGame":
 		teleport loop-value to {_spawnlime}
 	make console execute command "/worldborder set %{options.border.size}%"
 
-#OPTIONS MODIFIABLES
-
-sub "EpiTaupe":
-	if {options.epTaupes} is 1:
-		set {options.epTaupes} to 2
-	if {options.epTaupes} is 2:
-		set {options.epTaupes} to 3
-	if {options.epTaupes} is 3:
-		set {options.epTaupes} to 4
-	if {options.epTaupes} is 4:
-		set {options.epTaupes} to 1
-
-sub "EpiTime":
-	if {options.epTemps} is 10:
-		set {options.epTemps} to 20
-	if {options.epTemps} is 20:
-		set {options.epTemps} to 30
-	if {options.epTemps} is 30:
-		set {options.epTemps} to 10
-
-sub "TopParTeam":
-	if {options.topParTeam} is 1:
-		set {options.topParTeam} to 2
-	if {options.topParTeam} is 2:
-		set {options.topParTeam} to 3
-	if {options.topParTeam} is 3:
-		set {options.topParTeam} to 4
-	if {options.topParTeam} is 4:
-		set {options.topParTeam} to 5
-	if {options.topParTeam} is 5:
-		set {options.topParTeam} to 1
-
-sub "DispInfos":
-	broadcast " "
-	broadcast "&3[--{@plugin}&3--]"
-	broadcast "&2Taupes choisis : Episode &6%{options.epTaupes}%"
-	broadcast "&2Episode de &6%{options.epTemps}% &2minutes"
-	if {options.topParTeam} is 1:
-		broadcast "&6%{options.topParTeam}% &2Taupe par Equipe"
-	else:
-		broadcast "&6%{options.topParTeam}% &2Taupes par Equipe"
-	if {options.border.size} is 250:
-		broadcast "&2Bordure de départ : &6500x500"
-	else if {options.border.size} is 500:
-		broadcast "&2Bordure de départ : &61000x1000"
-	else if {options.border.size} is 1000:
-		broadcast "&2Bordure de départ : &62000x2000"
-	else if {options.border.size} is 2000:
-		broadcast "&2Bordure de départ : &64000x4000"
-	broadcast " "
-
-sub "ForbidStrII":
-	if {options.forbid.pot.strII} is false:
-		set {options.forbid.pot.strII} to true
-		set {options.forbid.pot.strII.txt} to "&cInterdites"
-	else:
-		set {options.forbid.pot.strII} to false
-		set {options.forbid.pot.strII.txt} to "&aAutorisés"	
-
-on right click with potion of:8233:
-	if {options.forbid.pot.strII} is true:
-		remove potion of:8233 from player's inventory
-		cancel event
-
-sub "BorderChange":
-	if {options.border.size} is 250:
-		set {options.border.size} to 230
-		set {_spawnblue} to location at (-480, 200, -480) in world "Taupe gun"
-		set {_spawnpurple} to location at (-480, 200, 480) in world "Taupe gun"
-		set {_spawnyellow} to location at (480, 200, -480) in world "Taupe gun"
-		set {_spawnlime} to location at (480, 200, 480) in world "Taupe gun"
-	if {options.border.size} is 500:
-		set {options.border.size} to 1000
-		set {_spawnblue} to location at (-980, 200, -980) in world "Taupe gun"
-		set {_spawnpurple} to location at (-980, 200, 980) in world "Taupe gun"
-		set {_spawnyellow} to location at (980, 200, -980) in world "Taupe gun"
-		set {_spawnlime} to location at (980, 200, 980) in world "Taupe gun"
-	if {options.border.size} is 1000:
-		set {options.border.size} to 2000
-		set {_spawnblue} to location at (-1980, 200, -1980 ) in world "Taupe gun"
-		set {_spawnpurple} to location at (-1980, 200, 1980) in world "Taupe gun"
-		set {_spawnyellow} to location at (1980, 200, -1980) in world "Taupe gun"
-		set {_spawnlime} to location at (1980, 200, 1980) in world "Taupe gun"
-	if {options.border.size} is 2000:
-		set {options.border.size} to 250
-		set {_spawnblue} to location at (-230, 200, -230) in world "Taupe gun"
-		set {_spawnpurple} to location at (-230, 200, 230) in world "Taupe gun"
-		set {_spawnyellow} to location at (230, 200, -230) in world "Taupe gun"
-		set {_spawnlime} to location at (230, 200, 230) in world "Taupe gun"
-
 sub "BorderReduce":
 	reduce {options.border.size.actual} by {options.border.size.reduction}
 	make console execute command "/worldborder set %{options.border.size.actual}%"
+
+#OPTIONS MODIFIABLES
+command "/topogControl <text>":
+	trigger:
+		if arg is "EpiTaupe":
+			if {options.epTaupes} is 1:
+				set {options.epTaupes} to 2
+			else if {options.epTaupes} is 2:
+				set {options.epTaupes} to 3
+			else if {options.epTaupes} is 3:
+				set {options.epTaupes} to 4
+			else if {options.epTaupes} is 4:
+				set {options.epTaupes} to 1
+			else:
+				set {options.epTaupes} to 1
+
+		if arg is "EpiTime":
+			if {options.epTemps} is 10:
+				set {options.epTemps} to 20
+			else if {options.epTemps} is 20:
+				set {options.epTemps} to 30
+			else if {options.epTemps} is 30:
+				set {options.epTemps} to 10
+			else:
+				set {options.epTemps} to 20
+
+		if arg is "TopParTeam":
+			if {options.topParTeam} is 1:
+				set {options.topParTeam} to 2
+			else if {options.topParTeam} is 2:
+				set {options.topParTeam} to 3
+			else if {options.topParTeam} is 3:
+				set {options.topParTeam} to 4
+			else if {options.topParTeam} is 4:
+				set {options.topParTeam} to 5
+			else if {options.topParTeam} is 5:
+				set {options.topParTeam} to 1
+			else:
+				set {options.topParTeam} to 1
+
+		if arg is "DispInfos":
+			broadcast " "
+			broadcast "&3[--{@plugin}&3--]"
+			broadcast "&2Taupes choisis : Episode &6%{options.epTaupes}%"
+			broadcast "&2Episode de &6%{options.epTemps}% &2minutes"
+			if {options.topParTeam} is 1:
+				broadcast "&6%{options.topParTeam}% &2Taupe par Equipe"
+			else:
+				broadcast "&6%{options.topParTeam}% &2Taupes par Equipe"
+			if {options.border.size} is 250:
+				broadcast "&2Bordure de départ : &6500x500"
+			else if {options.border.size} is 500:
+				broadcast "&2Bordure de départ : &61000x1000"
+			else if {options.border.size} is 1000:
+				broadcast "&2Bordure de départ : &62000x2000"
+			else if {options.border.size} is 2000:
+				broadcast "&2Bordure de départ : &64000x4000"
+			broadcast " "
+
+		if arg is "ForbidStrII":
+			if {options.forbid.pot.strII} is false:
+				set {options.forbid.pot.strII} to true
+				set {options.forbid.pot.strII.txt} to "&cInterdites"
+			else:
+				set {options.forbid.pot.strII} to false
+				set {options.forbid.pot.strII.txt} to "&aAutorisés"	
+
+		if arg is "BorderChange":
+			if {options.border.size} is 250:
+				set {options.border.size} to 230
+				set {_spawnblue} to location at (-480, 200, -480) in world "Taupe gun"
+				set {_spawnpurple} to location at (-480, 200, 480) in world "Taupe gun"
+				set {_spawnyellow} to location at (480, 200, -480) in world "Taupe gun"
+				set {_spawnlime} to location at (480, 200, 480) in world "Taupe gun"
+			else if {options.border.size} is 500:
+				set {options.border.size} to 1000
+				set {_spawnblue} to location at (-980, 200, -980) in world "Taupe gun"
+				set {_spawnpurple} to location at (-980, 200, 980) in world "Taupe gun"
+				set {_spawnyellow} to location at (980, 200, -980) in world "Taupe gun"
+				set {_spawnlime} to location at (980, 200, 980) in world "Taupe gun"
+			else if {options.border.size} is 1000:
+				set {options.border.size} to 2000
+				set {_spawnblue} to location at (-1980, 200, -1980 ) in world "Taupe gun"
+				set {_spawnpurple} to location at (-1980, 200, 1980) in world "Taupe gun"
+				set {_spawnyellow} to location at (1980, 200, -1980) in world "Taupe gun"
+				set {_spawnlime} to location at (1980, 200, 1980) in world "Taupe gun"
+			else if {options.border.size} is 2000:
+				set {options.border.size} to 250
+				set {_spawnblue} to location at (-230, 200, -230) in world "Taupe gun"
+				set {_spawnpurple} to location at (-230, 200, 230) in world "Taupe gun"
+				set {_spawnyellow} to location at (230, 200, -230) in world "Taupe gun"
+				set {_spawnlime} to location at (230, 200, 230) in world "Taupe gun"
+			else:
+n				set {options.border.size} to 230
+				set {_spawnblue} to location at (-480, 200, -480) in world "Taupe gun"
+				set {_spawnpurple} to location at (-480, 200, 480) in world "Taupe gun"
+				set {_spawnyellow} to location at (480, 200, -480) in world "Taupe gun"
+				set {_spawnlime} to location at (480, 200, 480) in world "Taupe gun"
+
 
