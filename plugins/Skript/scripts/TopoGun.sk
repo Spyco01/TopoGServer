@@ -116,7 +116,8 @@ on right click with nether star:
 			format slot 1 of player with cyan wool named "&cDurée Episode" with lore "&6%{options.epTemps}% &aminutes" to run "topogcontrol EpiTime"
 			format slot 2 of player with cyan wool named "&cTaupes par Equipe &6%{options.topParTeam}%" to run "topogcontrol TopParTeam"
 			format slot 3 of player with 373:8233 named "&cPotions Force II %{options.forbid.pot.strII.txt}%" to run "topogcontrol ForbidStrII"
-			format slot 4 of player with cyan wool named "&cTaupes par Equipe &6%{options.topParTeam}%" to run "topogcontrol TopParTeam"
+			format slot 4 of player with cyan wool named "&6%{options.topParTeam}% &cTaupes par Equipe" to run "topogcontrol TopParTeam"
+			format slot 5 of player with cyan wool named "&cBordure de : &6%{options.border.size.text}%" to run "topogcontrol BorderChange"
 			format slot 8 of player with cyan wool named "&cInfos Partie" with lore "&aAffiche toutes les infos de la partie" to close then run "topogcontrol DispInfos"
 
 on right click with potion of:8233:
@@ -222,34 +223,39 @@ command /topogcontrol <text>:
 
 		else if arg is "BorderChange":
 			if {options.border.size} is 250:
-				set {options.border.size} to 230
+				set {options.border.size} to 500
 				set {_spawnblue} to location at (-480, 200, -480) in world "Taupe gun"
 				set {_spawnpurple} to location at (-480, 200, 480) in world "Taupe gun"
 				set {_spawnyellow} to location at (480, 200, -480) in world "Taupe gun"
 				set {_spawnlime} to location at (480, 200, 480) in world "Taupe gun"
+				set {options.border.size.text} to "500x500"
 			else if {options.border.size} is 500:
 				set {options.border.size} to 1000
 				set {_spawnblue} to location at (-980, 200, -980) in world "Taupe gun"
 				set {_spawnpurple} to location at (-980, 200, 980) in world "Taupe gun"
 				set {_spawnyellow} to location at (980, 200, -980) in world "Taupe gun"
 				set {_spawnlime} to location at (980, 200, 980) in world "Taupe gun"
+				set {options.border.size.text} to "1000x1000"
 			else if {options.border.size} is 1000:
 				set {options.border.size} to 2000
 				set {_spawnblue} to location at (-1980, 200, -1980 ) in world "Taupe gun"
 				set {_spawnpurple} to location at (-1980, 200, 1980) in world "Taupe gun"
 				set {_spawnyellow} to location at (1980, 200, -1980) in world "Taupe gun"
 				set {_spawnlime} to location at (1980, 200, 1980) in world "Taupe gun"
+				set {options.border.size.text} to "2000x2000"
 			else if {options.border.size} is 2000:
 				set {options.border.size} to 250
 				set {_spawnblue} to location at (-230, 200, -230) in world "Taupe gun"
 				set {_spawnpurple} to location at (-230, 200, 230) in world "Taupe gun"
 				set {_spawnyellow} to location at (230, 200, -230) in world "Taupe gun"
 				set {_spawnlime} to location at (230, 200, 230) in world "Taupe gun"
+				set {options.border.size.text} to "4000x4000"
 			else:
-				set {options.border.size} to 230
+				set {options.border.size} to 500
 				set {_spawnblue} to location at (-480, 200, -480) in world "Taupe gun"
 				set {_spawnpurple} to location at (-480, 200, 480) in world "Taupe gun"
 				set {_spawnyellow} to location at (480, 200, -480) in world "Taupe gun"
 				set {_spawnlime} to location at (480, 200, 480) in world "Taupe gun"
+				set {options.border.size.text} to "500x500"
 
 
