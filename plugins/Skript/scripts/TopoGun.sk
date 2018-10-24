@@ -156,7 +156,8 @@ sub "BorderReduce":
 	make console execute command "/worldborder set %{options.border.size.actual}%"
 
 #OPTIONS MODIFIABLES
-command "/topogcontrol <text>":
+
+command /topogcontrol <text>:
 	trigger:
 		if arg is "EpiTaupe":
 			if {options.epTaupes} is 1:
